@@ -16,17 +16,16 @@
 
 provider "google" {
     version = ">3.5.0"
+    project = var.project_id
 
     credentials = file("${var.creds_file}")
 
-    project = var.project_id
     region  = var.region
     zone    = var.zone
 }
 
 module "autoscaler" {
   source = "../modules/autoscaler"
-
   project_id = var.project_id
 }
 

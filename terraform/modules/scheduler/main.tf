@@ -20,10 +20,11 @@ resource "google_app_engine_application" "app" {
 }
 
 resource "google_cloud_scheduler_job" "poller_job" {
-  name        = "poll-main-instance-metrics"
+  name        = "${var.prefix!= "" ? "${var.prefix}-" : ""}poll-main-instance-metrics"
   description = "Poll metrics for main-instance"
   schedule    = var.schedule
   time_zone   = var.time_zone
+  region      = var.region
 
   pubsub_target {
     topic_name = var.pubsub_topic

@@ -33,3 +33,8 @@ variable "forwarder_sa_emails" {
   // Example ["serviceAccount:forwarder_sa@app-project.iam.gserviceaccount.com"]
   default = []
 }
+
+variable "prefix" {
+  type = string
+  default = ""
+}
